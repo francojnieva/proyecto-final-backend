@@ -1,4 +1,5 @@
 import { ContactModel } from "../schemas/contactSchema.js";
+import mongoose from "mongoose";
 
 
 export const contactForm = async (req, res) => {
