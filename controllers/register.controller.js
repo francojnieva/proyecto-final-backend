@@ -1,4 +1,5 @@
 import { RegisterModel } from "../schemas/registerSchema.js"
+import bcrypt from "bcrypt"
 
 export const register = async (req, res) => {
     try {
