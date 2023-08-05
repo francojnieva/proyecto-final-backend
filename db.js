@@ -2,12 +2,15 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/db")
-        console.log("Database connect")
+      const connectionURL = 'mongodb+srv://franco-test:franco-test@cluster0.nqg9ebl.mongodb.net/db?retryWrites=true&w=majority'
+      await mongoose.connect(connectionURL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      console.log("Database connected")
     } catch (error) {
-        console.log("Error connecting to database", error)
+      console.log("Error connecting to database", error)
     }
-}
+  }
 
-export default connectDB
-
+  export default connectDB
