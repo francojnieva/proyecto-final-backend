@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const connectDB = async () => {
     try {
-      const connectionURL = 'mongodb+srv://franco-test:franco-test@cluster0.nqg9ebl.mongodb.net/db?retryWrites=true&w=majority'
+      const connectionURL = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.zz2tqfw.mongodb.net/?retryWrites=true&w=majority`
       await mongoose.connect(connectionURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -13,4 +16,4 @@ const connectDB = async () => {
     }
   }
 
-  export default connectDB
+export default connectDB
