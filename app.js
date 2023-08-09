@@ -8,6 +8,7 @@ import routerTestimony from "./routes/testimony.routes.js";
 import routerUsers from "./routes/users.routes.js";
 import routerProduct from "./routes/products.routes.js"
 import dotenv from "dotenv"
+import fileUpload from "express-fileupload";
 
 dotenv.config()
 
@@ -19,6 +20,12 @@ app.use("/api", routerAboutUs)
 app.use("/api", routerTestimony)
 app.use("/api", routerUsers)
 app.use("/api/products", routerProduct)
+app.use(fileUpload(
+    {
+        useTempFiles: true,
+        tempFileDir: "/temp/",
+    }
+))
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

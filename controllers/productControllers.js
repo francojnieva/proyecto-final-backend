@@ -1,4 +1,6 @@
+/* import { request } from "express" */
 import { ProductModel } from "../schemas/product.models.js"
+import { uploadImage } from "../Utils/cloudinary.js"
 
 const getProducts = async(req, res) =>{/* req  res resolve*/
    try {
@@ -10,7 +12,8 @@ const getProducts = async(req, res) =>{/* req  res resolve*/
 
 }
 
-const getOneProduct = async(req, res) =>{/* req  res resolve*/
+const getOneProduct = async(req, res) =>{
+
    try {
      const getProduct = await ProductModel.findOne({_id:req.params.id})
      res.status(200).json({getProduct})
@@ -21,7 +24,21 @@ const getOneProduct = async(req, res) =>{/* req  res resolve*/
 }
 
 const createProduct = async (req, res) =>{
+  
+   console.log(req.body)
+
+    if(req.files?.image){
+        const {image} = req.files
+        await uploadImage(image.tempFilePath)
+
+    }
+
+  
+
+
    try {
+    console.log(req.files)
+   
     const existProd = await ProductModel.findOne({title: req.body.title})
 
     if(existProd){
@@ -32,6 +49,8 @@ const createProduct = async (req, res) =>{
     const newProd = new ProductModel(req.body)
     await newProd.save()
     res.status(201).json({msg:'Producto creado', newProd})
+   
+    
     
    } catch (error) {
     res.status(500).json({msg:'Error al crear', error})
