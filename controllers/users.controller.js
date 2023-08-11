@@ -1,5 +1,9 @@
 import { RegisterModel } from "../schemas/registerSchema.js"
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 export const register = async (req, res) => {
     try {
@@ -21,6 +25,10 @@ export const login = async (req, res) => {
             const response = await bcrypt.compare(password, user.password)
 
             if (response) {
+                const secretKey = process.env.SECRET_KEY
+                const token = jwt.sign({ user_id: user._id }, secretKey, { expiresIn: "1d" })
+                // console.log("Token generado:", token)
+                res.cookie("mi_token", token, { httpOnly: true}  )
                 res.json("Exitoso")
             } else {
                 res.json("Los datos no son correctos")
