@@ -13,6 +13,12 @@ import fileUpload from "express-fileupload";
 dotenv.config()
 
 const app = express()
+app.use(fileUpload(
+    {
+        useTempFiles: true,
+        tempFileDir: "./temp",
+    }
+))
 app.use(express.json())
 app.use(cors())
 app.use("/api", routerContact)
@@ -20,12 +26,7 @@ app.use("/api", routerAboutUs)
 app.use("/api", routerTestimony)
 app.use("/api", routerUsers)
 app.use("/api/products", routerProduct)
-app.use(fileUpload(
-    {
-        useTempFiles: true,
-        tempFileDir: "/temp/",
-    }
-))
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
