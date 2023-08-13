@@ -33,7 +33,7 @@ const createProduct = async (req, res) => {
         return res.status(400).json({ msg: "Producto existente en la DB" });
       }
   
-      let cloudinaryResponse = {}; 
+       let cloudinaryResponse = {}; 
       if (req.files?.image) {
         const { image } = req.files;
         cloudinaryResponse = await uploadImage(image.tempFilePath);
