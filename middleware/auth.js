@@ -16,7 +16,7 @@ import { RegisterModel } from '../schemas/registerSchema.js'
 
     console.log("token",token)
     console.log(verify.user_id)
-    console.log("usuario", userExist)
+    console.log("usuario",userExist)
     
     
    } catch (error) {
