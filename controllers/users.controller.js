@@ -46,7 +46,6 @@ export const login = async (req, res) => {
           "prueba1",
           { expiresIn: "1d" }
         );
-        console.log(token);
 
         res.json({
           msg: "Exitoso",
