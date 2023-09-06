@@ -1,8 +1,8 @@
-/* import { request } from "express" */
+
 import { ProductModel } from "../schemas/product.models.js"
 import { uploadImage } from "../utils/cloudinary.js"
 
-const getProducts = async(req, res) =>{/* req  res resolve*/
+const getProducts = async(req, res) =>{
    try {
      const getProducts = await ProductModel.find()
      res.status(200).json({getProducts})

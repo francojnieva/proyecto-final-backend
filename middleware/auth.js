@@ -13,11 +13,6 @@ import { RegisterModel } from '../schemas/registerSchema.js'
      }else{
         res.status(401).json({msg: 'No Autorizado'})
      }
-
-    console.log("token",token)
-    console.log(verify.user_id)
-    console.log("usuario",userExist)
-    
     
    } catch (error) {
     console.log(error)
