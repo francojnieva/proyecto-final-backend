@@ -1,6 +1,6 @@
 
 import { ProductModel } from "../schemas/product.models.js"
-import { uploadImage } from "../utils/cloudinary.js"
+import { uploadImage } from "../Utils/cloudinary.js"
 
 const getProducts = async(req, res) =>{
    try {
