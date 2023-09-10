@@ -2,7 +2,7 @@ import { RegisterModel } from "../schemas/registerSchema.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { uploadImage } from "../utils/cloudinary.js";
+import { uploadImage } from "../Utils/cloudinary.js";
 
 dotenv.config();
 
